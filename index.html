@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Gestion des Etudiants</title>
+        <link rel="stylesheet" href="css/style.css">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+
+    </head>
+    <body>
+
+        <div class="container">
+            <h1 class="text-center">Gestion des Etudiants</h1>
+            <div class="row" id="enregistrer-etudiant">
+                <!-- Zone pour enregistrer un nouvel etudiant -->
+                <form>
+                    <fieldset class="form-group border mb-3">
+                        <legend class="fw-bold text-center">Enregistrer un étudiant</legend>                
+                        <div class="row m-3">
+                            <div class="col">
+                                <div class="form-group mb-3">
+                                    <label for="nom" class="fw-bold">Nom</label>
+                                    <input type="text" class="form-control" id="nom" placeholder="Votre Nom">
+                                </div>
+            
+                                <div class="form-group mb-3">
+                                    <label for="prenom" class="fw-bold">Prénom</label>
+                                    <input type="text" class="form-control" id="prenom" placeholder="Votre Prenom">
+                                </div>
+            
+                                <div class="form-group mb-3">
+                                    <label for="datenaissance" class="fw-bold">Date de Naissance</label>
+                                    <input type="date" class="form-control" id="datenaissance">
+                                </div>
+                                
+                                <div class="form-group mb-3">
+                                    <label for="lieunaissance" class="fw-bold">Lieu de Naissance</label>
+                                    <input type="text" class="form-control" id="lieunaissance" placeholder="Votre Lieu de Naissance">
+                                </div>
+            
+                                <div class="row">
+                                    <div class="col form-group mb-3">
+                                        <label for="taille" class="fw-bold">Taille</label>
+                                        <input type="number" class="form-control" id="taille">
+                                    </div>
+        
+                                    <div class="col form-group mb-3">
+                                        <label for="taille" class="fw-bold">Poids</label>
+                                        <input type="number" class="form-control" id="poids">
+                                    </div>
+                                </div>
+                
+                                <div class="sexe mb-3"> 
+                                    <p class="mb-0 fw-bold">Sexe</p>
+        
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
+                                        <label class="form-check-label" for="inlineRadio1">Homme</label>
+                                    </div>
+                        
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
+                                        <label class="form-check-label" for="inlineRadio2">Femme</label>
+                                    </div>
+                                </div>
+    
+                            </div>
+                                
+                            <div class="col">
+                                <div class="form-group mb-3">
+                                    <label for="parcours" class="fw-bold">Parcours</label>
+                                    <select class="form-select form-control" id="parcours" aria-label="Default select example">
+                                        <option selected>Selectionner le parcours</option>
+                                        <option value="art">Art Numérique</option>
+                                        <option value="datascience">DataScience</option>
+                                        <option value="dev">Developpement Web</option>
+                                    </select>                 
+                                </div>
+        
+                                <div class="row">
+                                    <div class="col form-group mb-3">
+                                        <label for="matiere" class="fw-bold">Matières</label>
+                                        <select class="form-select form-control" id="matiere" aria-label="Default select example">
+                                            <option selected>Matière ... </option>
+                                            <option value="mat1">Art Numérique</option>
+                                            <option value="mat2">DataScience</option>
+                                            <option value="mat3">Developpement Web</option>
+                                        </select> 
+                                    </div>
+        
+                                    <div class="col form-group mb-3">
+                                        <label for="note" class="fw-bold">Note</label>
+                                        <input type="number" class="form-control" id="note">
+                                    </div>
+            
+                                    <div class="col form-group align-self-center">
+                                       <button class="btn btn-primary">Ajouter</button>
+                                    </div>
+                                </div>
+            
+                                <div class="table-responsive">
+                                    <table class="table table-bordered">
+                                    <thead>
+                                        <tr>
+                                            <th class="text-center">Matières</th>
+                                            <th class="text-center">Notes</th>
+                                            <th class="text-center">Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>Anglais</td>
+                                            <td>19</td>
+                                            <td>add / delete</td>
+                                        </tr>
+                                    </tbody>
+                                    </table>
+                                </div>
+    
+                            </div>
+
+                        </div>
+    
+                        <button type="submit" class="btn btn-primary mt-1 mb-4 mx-4 ms-4">Enregistrer</button>
+                    </fieldset>
+                </form>
+
+            </div>
+
+            <div class="row mt-3" id="zone-affichage">
+                <!-- Zone d'affichage -->
+                <div class="col">
+                    <h2 class="students mb-4">Listes des étudiants</h2>
+                    <div class="table-responsive">
+                        <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th class="text-center">N°</th>
+                                <th class="text-center">Noms & Prénoms</th>
+                                <th class="text-center">Date de Naissance</th>
+                                <th class="text-center">Lieu de Naissance</th>
+                                <th class="text-center">Parcours</th>
+                                <th class="text-center">Sexe</th>
+                                <th class="text-center">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td>Lina Bilou</td>
+                                <td>23/03/1998</td>
+                                <td>Yaounde</td>
+                                <td>Dev Web</td>
+                                <td>F</td>
+                                <td>add / delete / view</td>
+                            </tr>
+                        </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row mt-3" id="zone-details">
+                <h2 id="student">Information d'un Etudiant</h2>
+                <div class="col mt-3">
+                    <!-- Zone de détails -->
+                    <div class="row">
+                        <div class="col" id="personal-info">
+                            <!-- informations personnelles de l'étudiant -->
+                            <p class="fs-5">Noms & Prenoms : </p>
+                            <p class="fs-5">Date & Lieu de Naissance : </p>
+                            <p class="fs-5">Sexe : </p>
+                            <p class="fs-5">Parcours : </p>
+                            <p class="fs-5">Taille : </p>
+                            <p class="fs-5">Poids : </p>
+                        </div>
+
+                        <div class="col" id="note-etudiant">
+                            <!-- Notes de l'étudiant -->
+                            <h3>Notes</h3>
+                            <div class="table-responsive">
+                                <table class="table table-bordered">
+                                <thead>
+                                    <tr>
+                                        <th class="text-center">Matières</th>
+                                        <th class="text-center">Notes</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Anglais</td>
+                                        <td>19</td>
+                                    </tr>
+                                </tbody>
+                                </table>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.min.js" integrity="sha384-ODmDIVzN+pFdexxHEHFBQH3/9/vQ9uori45z4JjnFsRydbmQbmL5t1tQ0culUzyK" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js" integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.min.js" integrity="sha384-ODmDIVzN+pFdexxHEHFBQH3/9/vQ9uori45z4JjnFsRydbmQbmL5t1tQ0culUzyK" crossorigin="anonymous"></script>
+    </body>
+</html>
