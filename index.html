@@ -17,59 +17,35 @@
            
             <div class="row mt-5" id="zone-affichage">
                 <!-- Zone d'affichage -->
-                <h2 class="students mb-4">Listes des étudiants</h2>
-                <div class="new">
-                   <button type="button" class="btn btn-outline-secondary mb-3 fw-bold" id="new-recordStudent">Nouveau Etudiant</button>                   </div>
+                <div class="d-flex justify-content-between mb-3">
+                    <h2 class="students mb-3">Listes des étudiants</h2>
+                    <button type="button" class="btn btn-outline-primary mb-3 fw-bold " id="new-recordStudent">Nouveau Etudiant</button>                   </div>
                 </div>
+                
                 <div class="col">
                     <div class="table-responsive">
                         <table class="table table-bordered" id="table-students">
                             <thead class="bg-primary text-white">
                                 <tr>
-                                    <!-- <th class="text-center">Matricule</th> -->
+                                    <th class="text-center">Matricule</th>
                                     <th class="text-center">Noms</th>
                                     <th class="text-center">Prénoms</th>
                                     <th class="text-center">Date de Naissance</th>
                                     <th class="text-center">Lieu de Naissance</th>                                
-                                    <!-- <th class="text-center">Sexe</th> -->
+                                    <th class="text-center">Sexe</th>
                                     <th class="text-center">Parcours</th>
                                     <th class="text-center">Action</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <!-- <tr>
-                                    <td class="text-center">1</td>
-                                    <td class="text-center">Lina</td>
-                                    <td class="text-center">Bilou</td>
-                                    <td class="text-center">23/03/1998</td>
-                                    <td class="text-center">Yaounde</td>
-                                    <td class="text-center">F</td>
-                                    <td class="text-center">Dev Web</td>
-                                    
-                                    <td class="text-center">
-                                        <ul class="list-inline m-0">
-                                            <li class="list-inline-item">
-                                                <button class="btn btn-primary btn-sm rounded-0" id="fa-plus" type="button" data-bs-toggle="tooltip" data-bs-placement="top" title="Add"><i class="fa-solid fa-plus"></i></button>
-                                            </li>
-                                            <li class="list-inline-item">
-                                                <button class="btn btn-success btn-sm rounded-0" id="fa-edit" type="button" data-bs-toggle="tooltip" data-bs-placement="top" title="Edit"><i class="fa fa-edit"></i></button>
-                                            </li>
-                                            <li class="list-inline-item">
-                                                <button class="btn btn-info btn-sm rounded-0" id="fa-view" type="button" data-bs-toggle="tooltip" data-bs-placement="top" title="View"><i class="fa-solid fa-eye"></i></button>
-                                            </li>
-                                            <li class="list-inline-item">
-                                                <button class="btn btn-danger btn-sm rounded-0" type="button" data-bs-toggle="tooltip" data-bs-placement="top" title="Delete"><i class="fa-solid fa-minus"></i></button>
-                                            </li>
-                                        </ul>
-                                    </td>
-                                </tr> -->
+                                <!-- A remplir via le JS -->
                             </tbody>
                         </table>
                     </div>
                 </div>
             </div>
 
-            <div class="row" id="enregistrer-etudiant">
+            <div class="row" id="zone-enregistrement-etudiant">
                 <!-- Zone pour enregistrer un nouvel etudiant -->
                 <form>
                     <fieldset class="form-group border mb-3">
@@ -78,23 +54,30 @@
                             <div class="col">
                                 <div class="form-group mb-3">
                                     <label for="nom" class="fw-bold">Nom</label>
-                                    <input type="text" class="form-control" id="nom" placeholder="Votre Nom">
+                                    <input type="text" class="form-control" id="nom" placeholder="Votre Nom" required>
                                 </div>
             
                                 <div class="form-group mb-3">
                                     <label for="prenom" class="fw-bold">Prénom</label>
-                                    <input type="text" class="form-control" id="prenom" placeholder="Votre Prenom">
+                                    <input type="text" class="form-control" id="prenom" placeholder="Votre Prenom" required>
                                 </div>
             
                                 <div class="form-group mb-3">
                                     <label for="datenaissance" class="fw-bold">Date de Naissance</label>
-                                    <input type="date" class="form-control" id="datenaissance">
+                                    <input type="date" class="form-control" id="datenaissance" required>
                                 </div>
                                 
                                 <div class="form-group mb-3">
                                     <label for="lieunaissance" class="fw-bold">Lieu de Naissance</label>
-                                    <input type="text" class="form-control" id="lieunaissance" placeholder="Votre Lieu de Naissance">
+                                    <input type="text" class="form-control" id="lieunaissance" placeholder="Votre Lieu de Naissance" required>
                                 </div>
+
+                                <div class="form-group mb-3">
+                                    <label for="matricule" class="fw-bold">Matricule</label>
+                                    <input type="text" class="form-control" id="matricule" placeholder="Entrer un matricule" required>
+                                    <!-- Le matricule doit etre unique et doit suivre une regle: le matricule doit  -->
+                                </div>
+            
             
                                 <div class="row">
                                     <div class="col form-group mb-3">
@@ -112,13 +95,13 @@
                                     <p class="mb-0 fw-bold">Sexe</p>
         
                                     <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
-                                        <label class="form-check-label" for="inlineRadio1">Homme</label>
+                                        <input class="form-check-input" type="radio" name="sexe" id="sexe1" value="Homme">
+                                        <label class="form-check-label" for="sexe1">Homme</label>
                                     </div>
                         
                                     <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
-                                        <label class="form-check-label" for="inlineRadio2">Femme</label>
+                                        <input class="form-check-input" type="radio" name="sexe" id="sexe2" value="Femme">
+                                        <label class="form-check-label" for="sexe2">Femme</label>
                                     </div>
                                 </div>
     
@@ -173,7 +156,7 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                           <!-- a remplir -->
+                                           <!-- a remplir via le js -->
                                         </tbody>
                                     </table>
                                 </div>
@@ -196,6 +179,7 @@
                         <div class="col" id="personal-info">
                             <!-- informations personnelles de l'étudiant -->
                             <p class="fs-5">Noms & Prenoms : <span id="nom-premon"></span> </p>
+                            <p class="fs-5">Matricule <span id="identifiant"></span> </p>
                             <p class="fs-5">Date & Lieu de Naissance : <span id="naissance"></span> </p>
                             <p class="fs-5">Sexe : <span id="sexe-fm"></span></p>
                             <p class="fs-5">Parcours : <span id="parcour"></span> </p>
@@ -231,8 +215,8 @@
         </div>
         <script src="js/script.js"></script>
         <script src="js/localstorage.js"></script>
-        <script src="js/brouillon.js"></script>
+        <script src="js/callToAction.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.min.js" integrity="sha384-ODmDIVzN+pFdexxHEHFBQH3/9/vQ9uori45z4JjnFsRydbmQbmL5t1tQ0culUzyK" crossorigin="anonymous"></script>
-        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js" integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js" integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk" crossorigin="anonymous"></script>   
     </body>
 </html>

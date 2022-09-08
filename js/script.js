@@ -1,23 +1,17 @@
 // Gestion des notes de l'étudiant
 // Ajouter et supprimer une matiere et sa note.
-
-
 const addMatiere = document.getElementById("matiere");
 const addNote = document.getElementById("note");
 const addButton = document.getElementById("boutonAjouter");
 
-// let matiereNoteData = {};
-let matiere, note;
+let matiereNoteData = {};
+
 // let selectedRow = null;
 
 function getMatiereNoteFormData(){
-    matiere = addMatiere.options[addMatiere.selectedIndex].text;
-    note = addNote.value;
-    // if ( typeof(note) !="number"){
-    //     alert("Veuillez entre un nombre valide !!!");
-    // }
-
-    // console.log(`${matiere}:${note}`);
+    matiereNoteData["matiere"] = addMatiere.options[addMatiere.selectedIndex].text;
+    matiereNoteData["note"] = addNote.value;
+    // il faudra rajouter un control supplementaire de valeur
     
 }
 
@@ -35,10 +29,10 @@ addButton.addEventListener('click',(event)=>{
     let tableMatiereNoteOne = document.getElementById("matiere-note-1").getElementsByTagName("tbody")[0];
     let newRow = tableMatiereNoteOne.insertRow(tableMatiereNoteOne.length);
     cell1 = newRow.insertCell(0);
-    cell1.innerHTML = matiere;
+    cell1.innerHTML = matiereNoteData.matiere;
     cell1.classList.add("text-center");
     cell2 = newRow.insertCell(1);
-    cell2.innerHTML = note;
+    cell2.innerHTML = matiereNoteData.note;
     cell2.classList.add("text-center");
     cell3 = newRow.insertCell(2);   
     cell3.innerHTML = `<ul class="list-inline m-0">
@@ -50,29 +44,46 @@ addButton.addEventListener('click',(event)=>{
     resetMatiereNoteFormData();
 });
 
+//Gestion des informations globales d'un étudiants
 
+let studentData = {} // l'objet qui va contenir toutes les données d'un étudiant
 
+const matriculeStudent = document.getElementById("matricule");
 const nomStudent = document.getElementById("nom"); 
 const prenomStudent = document.getElementById("prenom");
 const bornStudent = document.getElementById("datenaissance");
 const lieuNiassanceStudent = document.getElementById("lieunaissance");
+const sexeStudent = document.getElementsByName("sexe");
 const parcourStudent = document.getElementById("parcours");
 const tailleStudent = document.getElementById("taille");
 const poidStudent = document.getElementById("poids");
 
 const saveButton = document.getElementById("saveBtn");
 
+//function qui recupere la valeur de l'input radio
+function getChoiceSexe(){
+    for(let i = 0; i < sexeStudent.length; i++) {
+        if(sexeStudent[i].checked){
+            return sexeStudent[i].value;
+        }
+    }
+}
+
 function getStudentsInformationsFormData(){
-    nom = nomStudent.value;
-    prenom = prenomStudent.value;
-    naissance = bornStudent.value;
-    lieu = lieuNiassanceStudent.value;
-    parcours = parcourStudent.options[parcourStudent.selectedIndex].text;
-    taille = tailleStudent.value;
-    poids = poidStudent.value;
+    studentData["nom"] = nomStudent.value;
+    studentData["prenom"] = prenomStudent.value;
+    studentData["naissance"] = bornStudent.value;
+    studentData["lieu"]= lieuNiassanceStudent.value;
+    studentData["matricule"] = matriculeStudent.value;
+    studentData["sexe"] = getChoiceSexe();
+    studentData["parcours"] = parcourStudent.options[parcourStudent.selectedIndex].text;
+    studentData["taille"] = tailleStudent.value;
+    studentData["poids"] = poidStudent.value;
+    studentData["matieresNotes"] = getMatiereNoteFormData();
 
 }
 
+//Enregistrer les informations d'un nouvel etudiant cree dans le tableau de la liste des etudiants
 saveButton.addEventListener('click', (event) =>{
     event.preventDefault();
     event.stopPropagation();
@@ -80,25 +91,25 @@ saveButton.addEventListener('click', (event) =>{
     let tableStudents = document.getElementById("table-students").getElementsByTagName("tbody")[0];
     let newRow = tableStudents.insertRow(tableStudents.length);
     cell1 = newRow.insertCell(0);
-    cell1.innerHTML = nom;
+    cell1.innerHTML = studentData.matricule;
     cell1.classList.add("text-center");
     cell2 = newRow.insertCell(1);
-    cell2.innerHTML = prenom;
+    cell2.innerHTML = studentData.nom;
     cell2.classList.add("text-center");
     cell3 = newRow.insertCell(2);
-    cell3.innerHTML = naissance;
+    cell3.innerHTML = studentData.prenom;
     cell3.classList.add("text-center");
     cell4 = newRow.insertCell(3);
-    cell4.innerHTML = lieu;
+    cell4.innerHTML = studentData.naissance;
     cell4.classList.add("text-center");  
     cell5 = newRow.insertCell(4);
-    cell5.innerHTML = parcours;
+    cell5.innerHTML = studentData.lieu;
     cell5.classList.add("text-center");
     cell6 = newRow.insertCell(5);
-    cell6.innerHTML = taille;
+    cell6.innerHTML = studentData.sexe;
     cell6.classList.add("text-center");
     cell7 = newRow.insertCell(6);
-    cell7.innerHTML = poids;
+    cell7.innerHTML = studentData.parcours;
     cell8 = newRow.insertCell(7);
     cell8.classList.add("text-center");
     cell8.innerHTML = `<ul class="list-inline m-0">
@@ -117,8 +128,11 @@ saveButton.addEventListener('click', (event) =>{
                         </ul>`;
 });
 
+
+//FUnction pour sauvegarder les données de l'étudiant dans le local storage
 function saveStudentsInfo(data){
-    //enregistrer les donnees dun etudiqnt dans le localstorage
+    //code
+   
 }
 
 
