@@ -87,7 +87,9 @@ addButton.addEventListener('click',(event)=>{
     resetMatiereNoteFormData();
 });
 
-//Gestion des informations globales d'un étudiants
+/*
+Gestion des informations globales d'un étudiants
+*/
 
 let studentData = {} // l'objet qui va contenir toutes les données d'un étudiant
 
