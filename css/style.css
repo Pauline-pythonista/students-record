@@ -11,10 +11,3 @@ body{
 #zone-details{
     display: none;
 }
-
-button#new-recordStudent:hover{
-    
-    background-color: rgba(59, 194, 247, 0.7);
-    color: black;
-    border:none;
-}
